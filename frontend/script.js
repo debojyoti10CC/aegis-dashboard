@@ -44,17 +44,24 @@ class DisasterManagementUI {
                 // Update mode indicator
                 const modeDisplay = document.getElementById('mode-display');
                 const modeText = document.getElementById('mode-text');
-                modeDisplay.className = 'mode-display real-mode';
-                modeText.textContent = 'REAL TRANSACTION MODE ACTIVE';
                 
-                // Show warning
-                document.getElementById('real-transaction-warning').style.display = 'block';
+                if (data.mode === 'vercel_demo') {
+                    modeDisplay.className = 'mode-display demo-mode';
+                    modeText.textContent = 'VERCEL DEMO MODE - SIMULATED TRANSACTIONS';
+                    this.addLog('info', 'CONNECTED TO VERCEL DEMO SYSTEM');
+                    this.addLog('warning', 'THIS IS A DEMO - NO REAL BLOCKCHAIN TRANSACTIONS');
+                    this.addLog('info', 'FOR REAL TRANSACTIONS, USE DOCKER OR HEROKU DEPLOYMENT');
+                } else {
+                    modeDisplay.className = 'mode-display real-mode';
+                    modeText.textContent = 'REAL TRANSACTION MODE ACTIVE';
+                    // Show warning
+                    document.getElementById('real-transaction-warning').style.display = 'block';
+                    this.addLog('info', 'CONNECTED TO REAL DISASTER MANAGEMENT SYSTEM');
+                    this.addLog('warning', 'REAL BLOCKCHAIN TRANSACTIONS ENABLED');
+                    this.addLog('error', 'THIS WILL SPEND ACTUAL ETH FROM YOUR WALLET!');
+                }
                 
-                this.addLog('info', 'CONNECTED TO REAL DISASTER MANAGEMENT SYSTEM');
-                this.addLog('warning', 'REAL BLOCKCHAIN TRANSACTIONS ENABLED');
-                this.addLog('error', 'THIS WILL SPEND ACTUAL ETH FROM YOUR WALLET!');
-                
-                // Update UI with real status
+                // Update UI with status
                 this.updateRealSystemStatus(data);
             } else {
                 throw new Error('Backend not available');
