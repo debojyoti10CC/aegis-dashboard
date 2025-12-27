@@ -1,0 +1,63 @@
+# Disaster Management System Configuration
+
+# Redis Configuration
+redis:
+  url: "redis://redis:6379"
+
+# Agent Configuration
+agents:
+  watchtower:
+    enabled: true
+    heartbeat_interval: 30
+    disaster_thresholds:
+      fire: 0.6
+      flood: 0.5
+      structural: 0.7
+      casualty: 0.8
+
+  auditor:
+    enabled: true
+    heartbeat_interval: 30
+    verification_threshold: 75
+    max_historical_events: 100
+
+  treasurer:
+    enabled: true
+    heartbeat_interval: 30
+    min_funding_amount: 0.01  # ETH
+    max_funding_amount: 2.0   # ETH
+    funding_timeout: 300      # seconds
+    blockchain:
+      network_url: "https://sepolia.infura.io/v3/YOUR_PROJECT_ID"
+      private_key: ""  # Set via environment variable
+      gas_limit: 21000
+      gas_price: 20000000000  # 20 Gwei
+      default_recipients:
+        emergency_ngo: "0x742d35Cc6634C0532925a3b8D0C9e3e0C8b0e4c1"
+        local_government: "0x8ba1f109551bD432803012645Hac136c0c8b0e4c2"
+        disaster_relief: "0x9cb2f209661cE532925a3b8D0C9e3e0C8b0e4c3"
+
+# Monitoring Configuration
+monitoring:
+  heartbeat_timeout: 60
+  max_restarts: 5
+  health_check_interval: 30
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  console:
+    enabled: true
+    level: "INFO"
+    json_format: false
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file:
+    enabled: true
+    level: "DEBUG"
+    filename: "disaster_system.log"
+    json_format: true
+    max_bytes: 10485760  # 10MB
+    backup_count: 5
+  agent_files:
+    enabled: true

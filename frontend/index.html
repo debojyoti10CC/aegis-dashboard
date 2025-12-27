@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISASTER RESPONSE SYSTEM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="nav-pills">
+                <span class="pill active">DASHBOARD</span>
+                <span class="pill">ARCHITECTURE</span>
+                <span class="pill">GITHUB</span>
+            </div>
+            <h1 class="main-title">A FULLY AUTONOMOUS DISASTER RESPONSE SYSTEM</h1>
+        </header>
+
+        <div class="protocol-section">
+            <div class="protocol-header">
+                <span class="protocol-label">OUR PROTOCOL</span>
+            </div>
+            <div class="protocol-steps">
+                <h2 class="step-title">DETECTION</h2>
+                <h2 class="step-title">VERIFICATION</h2>
+                <h2 class="step-title">DISBURSEMENT</h2>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- Detection Card -->
+            <div class="card detect-card">
+                <div class="card-header">
+                    <h3>DETECT</h3>
+                </div>
+                <div class="card-content">
+                    <p>AI MONITORS GLOBAL DISASTER FEEDS</p>
+                    <div class="status-indicator" id="detect-status">WAITING</div>
+                    <div class="card-details" id="detect-details">
+                        READY TO PROCESS DISASTER IMAGES
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verify Card -->
+            <div class="card verify-card">
+                <div class="card-header">
+                    <h3>VERIFY</h3>
+                </div>
+                <div class="card-content">
+                    <p>ML FRAUD DETECTION + IDENTITY NFTS</p>
+                    <div class="status-indicator" id="verify-status">WAITING</div>
+                    <div class="card-details" id="verify-details">
+                        VERIFICATION ALGORITHMS READY
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disburse Card -->
+            <div class="card disburse-card">
+                <div class="card-header">
+                    <h3>DISBURSE</h3>
+                </div>
+                <div class="card-content">
+                    <p>SMART CONTRACTS RELEASE FUNDS INSTANTLY</p>
+                    <div class="status-indicator" id="disburse-status">WAITING</div>
+                    <div class="card-details" id="disburse-details">
+                        BLOCKCHAIN READY FOR TRANSACTIONS
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Card -->
+            <div class="card audit-card">
+                <div class="card-header">
+                    <h3>AUDIT</h3>
+                </div>
+                <div class="card-content">
+                    <p>PUBLIC, IMMUTABLE TRANSACTION TRAIL</p>
+                    <div class="status-indicator" id="audit-status">WAITING</div>
+                    <div class="card-details" id="audit-details">
+                        TRANSPARENCY PROTOCOLS ACTIVE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="system-status">
+            <div class="status-card">
+                <h3>BLOCKCHAIN STATUS</h3>
+                <div class="status-display" id="blockchain-status">CONNECTING...</div>
+                <div class="wallet-info" id="wallet-info"></div>
+            </div>
+            
+            <div class="status-card">
+                <h3>AGENT STATUS</h3>
+                <div class="agent-grid">
+                    <div class="agent-item">
+                        <span>WATCHTOWER</span>
+                        <div class="agent-dot offline" id="watchtower-dot"></div>
+                    </div>
+                    <div class="agent-item">
+                        <span>AUDITOR</span>
+                        <div class="agent-dot offline" id="auditor-dot"></div>
+                    </div>
+                    <div class="agent-item">
+                        <span>TREASURER</span>
+                        <div class="agent-dot offline" id="treasurer-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="mode-display" id="mode-display">
+                <span id="mode-text">CHECKING CONNECTION...</span>
+            </div>
+            
+            <div class="button-grid">
+                <button class="action-btn primary" id="test-disaster-btn">
+                    <span class="btn-label">TEST</span>
+                    <span class="btn-desc">DISASTER DETECTION</span>
+                </button>
+                
+                <button class="action-btn secondary" id="full-test-btn">
+                    <span class="btn-label">EXECUTE</span>
+                    <span class="btn-desc">FULL SYSTEM TEST</span>
+                </button>
+                
+                <button class="action-btn tertiary" id="clear-logs-btn">
+                    <span class="btn-label">CLEAR</span>
+                    <span class="btn-desc">SYSTEM LOGS</span>
+                </button>
+            </div>
+
+            <div class="warning-panel" id="real-transaction-warning" style="display: none;">
+                <div class="warning-header">REAL TRANSACTION MODE</div>
+                <div class="warning-text">THIS WILL SPEND ACTUAL ETH FROM YOUR WALLET!</div>
+            </div>
+        </div>
+
+        <!-- Terminal Output -->
+        <div class="terminal-section">
+            <div class="terminal-header">
+                <span>SYSTEM LOGS</span>
+                <div class="terminal-controls">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                </div>
+            </div>
+            <div class="terminal-content" id="terminal-content">
+                <div class="log-line">
+                    <span class="timestamp">[2025-12-27 18:48:51]</span>
+                    <span class="log-text">DISASTER MANAGEMENT SYSTEM INITIALIZED</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number" id="disasters-count">0</div>
+                <div class="stat-label">DISASTERS DETECTED</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="verified-count">0</div>
+                <div class="stat-label">VERIFIED EVENTS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="total-funding">0.000</div>
+                <div class="stat-label">TOTAL FUNDING (ETH)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="transactions-count">0</div>
+                <div class="stat-label">TRANSACTIONS</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

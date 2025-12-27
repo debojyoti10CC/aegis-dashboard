@@ -1,0 +1,13 @@
+# Vercel-optimized requirements (lighter versions)
+Flask==2.3.3
+web3==6.11.0
+Pillow==10.0.1
+numpy==1.24.3
+python-dotenv==1.0.0
+eth-account==0.9.0
+PyYAML==6.0.1
+asyncio==3.4.3
+flask-limiter==3.5.0
+
+# Note: OpenCV is too large for Vercel's 50MB limit
+# We'll use a mock version for demo or lighter image processing

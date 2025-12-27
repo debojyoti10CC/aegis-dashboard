@@ -1,0 +1,37 @@
+# Dockerfile for Watchtower Agent
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install system dependencies for OpenCV
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libgomp1 \
+    libgthread-2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY disaster_management_system/ ./disaster_management_system/
+COPY config.yaml .
+
+# Create directories
+RUN mkdir -p logs test_images
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV AGENT_TYPE=watchtower
+
+# Expose port for health checks
+EXPOSE 8001
+
+# Run watchtower agent
+CMD ["python", "-c", "import asyncio; from disaster_management_system.agents.watchtower import WatchtowerAgent; from disaster_management_system.shared.logging_config import setup_logging; setup_logging(); agent = WatchtowerAgent({'heartbeat_interval': 30}); asyncio.run(agent.start())"]

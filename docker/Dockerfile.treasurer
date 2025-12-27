@@ -1,0 +1,30 @@
+# Dockerfile for Treasurer Agent
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY disaster_management_system/ ./disaster_management_system/
+COPY config.yaml .
+
+# Create directories
+RUN mkdir -p logs
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV AGENT_TYPE=treasurer
+
+# Expose port for health checks
+EXPOSE 8003
+
+# Run treasurer agent
+CMD ["python", "-c", "import asyncio; from disaster_management_system.agents.treasurer import TreasurerAgent; from disaster_management_system.shared.logging_config import setup_logging; setup_logging(); config = {'heartbeat_interval': 30, 'blockchain': {'network_url': 'https://sepolia.infura.io/v3/YOUR_PROJECT_ID', 'private_key': '', 'gas_limit': 21000, 'gas_price': 20000000000}}; agent = TreasurerAgent(config); asyncio.run(agent.start())"]

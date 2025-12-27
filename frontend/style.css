@@ -1,0 +1,497 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #f0f0f0;
+    color: #000;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.pill {
+    background: #ddd;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #000;
+}
+
+.pill.active {
+    background: #000;
+    color: #fff;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+/* Protocol Section */
+.protocol-section {
+    margin-bottom: 40px;
+}
+
+.protocol-header {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.protocol-label {
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.protocol-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.step-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+/* Main Grid */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    border: 4px solid #000;
+    background: #fff;
+    min-height: 200px;
+    position: relative;
+    transition: transform 0.1s ease;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #000;
+}
+
+.card-header {
+    background: #000;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.status-indicator {
+    background: #ddd;
+    border: 2px solid #000;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.status-indicator.processing {
+    background: #ff0;
+    animation: blink 1s infinite;
+}
+
+.status-indicator.completed {
+    background: #0f0;
+}
+
+.status-indicator.failed {
+    background: #f00;
+    color: #fff;
+}
+
+.card-details {
+    font-size: 12px;
+    background: #f5f5f5;
+    border: 2px solid #000;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Card Colors */
+.detect-card .card-header {
+    background: #ff69b4;
+    color: #000;
+}
+
+.verify-card .card-header {
+    background: #87ceeb;
+    color: #000;
+}
+
+.disburse-card .card-header {
+    background: #ffa07a;
+    color: #000;
+}
+
+.audit-card .card-header {
+    background: #dda0dd;
+    color: #000;
+}
+
+/* System Status */
+.system-status {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.status-card {
+    border: 4px solid #000;
+    background: #fff;
+    padding: 20px;
+}
+
+.status-card h3 {
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    margin: -20px -20px 15px -20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.status-display {
+    background: #ddd;
+    border: 2px solid #000;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.status-display.connected {
+    background: #0f0;
+}
+
+.status-display.error {
+    background: #f00;
+    color: #fff;
+}
+
+.wallet-info {
+    font-size: 12px;
+    background: #f5f5f5;
+    border: 2px solid #000;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.agent-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.agent-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f5;
+    border: 2px solid #000;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.agent-dot {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #000;
+    background: #ddd;
+}
+
+.agent-dot.online {
+    background: #0f0;
+}
+
+/* Control Panel */
+.control-panel {
+    border: 4px solid #000;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.mode-display {
+    background: #000;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.mode-display.real-mode {
+    background: #f00;
+    animation: blink 2s infinite;
+}
+
+.mode-display.demo-mode {
+    background: #ff0;
+    color: #000;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    border: 4px solid #000;
+    background: #fff;
+    padding: 20px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+}
+
+.action-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #000;
+}
+
+.action-btn:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+}
+
+.action-btn.primary {
+    background: #ff69b4;
+}
+
+.action-btn.secondary {
+    background: #0f0;
+}
+
+.action-btn.tertiary {
+    background: #ddd;
+}
+
+.btn-label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.btn-desc {
+    display: block;
+    font-size: 10px;
+}
+
+.warning-panel {
+    background: #f00;
+    color: #fff;
+    border: 4px solid #000;
+    padding: 15px;
+    text-align: center;
+    animation: blink 2s infinite;
+}
+
+.warning-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.warning-text {
+    font-size: 12px;
+}
+
+/* Terminal */
+.terminal-section {
+    border: 4px solid #000;
+    background: #000;
+    color: #0f0;
+    margin-bottom: 40px;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-header {
+    background: #ddd;
+    color: #000;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.terminal-dot.red { background: #f00; }
+.terminal-dot.yellow { background: #ff0; }
+.terminal-dot.green { background: #0f0; }
+
+.terminal-content {
+    padding: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.log-line {
+    margin-bottom: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+.timestamp {
+    color: #888;
+    flex-shrink: 0;
+}
+
+.log-text {
+    color: #0f0;
+}
+
+.log-line.warning .log-text {
+    color: #ff0;
+}
+
+.log-line.error .log-text {
+    color: #f00;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-box {
+    border: 4px solid #000;
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.1s ease;
+}
+
+.stat-box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 #000;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #f00;
+}
+
+.stat-label {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .system-status {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .protocol-steps {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .step-title {
+        font-size: 2rem;
+    }
+    
+    .main-title {
+        font-size: 1.8rem;
+    }
+}

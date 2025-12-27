@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/static/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/frontend/static/$1"
+    },
+    {
+      "src": "/(.*\\.(css|js|html|ico|png|jpg|jpeg|gif|svg))",
+      "dest": "/frontend/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/frontend/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/app.py"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "/var/task"
+  },
+  "functions": {
+    "frontend/app.py": {
+      "maxDuration": 30
+    }
+  }
+}

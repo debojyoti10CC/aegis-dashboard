@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  disaster-system:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - BLOCKCHAIN_NETWORK_URL=${BLOCKCHAIN_NETWORK_URL:-https://sepolia.infura.io/v3/1df86dfd23a442cc8609f6dbe66d5832}
+      - BLOCKCHAIN_PRIVATE_KEY=${BLOCKCHAIN_PRIVATE_KEY:-0x847888bebc95f4ec43485b92093ae632e211c0d2a59d2ebf19a874c00a22144c}
+      - EMERGENCY_NGO_ADDRESS=${EMERGENCY_NGO_ADDRESS:-0x5D3f355f0EA186896802878E7Aa0b184469c3033}
+      - LOCAL_GOVERNMENT_ADDRESS=${LOCAL_GOVERNMENT_ADDRESS:-0x5D3f355f0EA186896802878E7Aa0b184469c3033}
+      - DISASTER_RELIEF_ADDRESS=${DISASTER_RELIEF_ADDRESS:-0x5D3f355f0EA186896802878E7Aa0b184469c3033}
+    volumes:
+      - ./test_images:/app/test_images:ro
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add Redis for production message queue
+  # redis:
+  #   image: redis:7-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   restart: unless-stopped
