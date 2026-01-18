@@ -13,6 +13,7 @@ import io
 
 from ..shared.base_agent import BaseAgent
 from ..shared.models import DisasterEvent, ImageInput
+import uuid
 
 
 class WatchtowerAgent(BaseAgent):
@@ -121,6 +122,53 @@ class WatchtowerAgent(BaseAgent):
             
         except Exception as e:
             self.logger.error(f"Error analyzing image: {e}")
+            return None
+
+    async def process_sensor_data(self, data: Dict[str, Any]) -> Optional[DisasterEvent]:
+        """Process sensor data from hardware (ESP32)"""
+        try:
+            self.logger.info(f"Processing sensor data: {data}")
+            
+            # Check if this is a disaster event
+            if data.get('type') == 'disaster_event':
+                disaster_type = data.get('sensor_type', 'unknown')
+                confidence = float(data.get('confidence', 0)) / 100.0
+                severity = float(data.get('severity', 0.5))
+                
+                # Parse location string "lat,lon"
+                location_str = data.get('location', '0,0')
+                try:
+                    lat, lon = map(float, location_str.split(','))
+                    coordinates = (lat, lon)
+                except:
+                    coordinates = (0.0, 0.0)
+
+                # Create disaster event
+                disaster_event = DisasterEvent(
+                    event_id=str(uuid.uuid4()),
+                    disaster_type=disaster_type,
+                    severity_score=severity,
+                    coordinates=coordinates,
+                    confidence=confidence,
+                    timestamp=datetime.utcnow(),
+                    image_analysis={
+                        'source': 'hardware_sensor',
+                        'raw_data': data,
+                        'processing_timestamp': datetime.utcnow().isoformat()
+                    }
+                )
+                
+                # Forward to auditor immediately
+                await self.send_message("auditor", {
+                    'disaster_event': disaster_event.to_dict()
+                })
+                
+                return disaster_event
+                
+            return None
+            
+        except Exception as e:
+            self.logger.error(f"Error processing sensor data: {e}")
             return None
     
     def _bytes_to_cv2_image(self, image_bytes: bytes) -> Optional[np.ndarray]:

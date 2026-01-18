@@ -27,10 +27,18 @@ try:
     from disaster_management_system.agents.auditor import AuditorAgent
     from disaster_management_system.agents.treasurer import TreasurerAgent
     from disaster_management_system.shared.logging_config import setup_logging
+    # Try importing hardware bridge
+    try:
+        from disaster_management_system.hardware.serial_bridge import SerialBridge
+        HARDWARE_AVAILABLE = True
+    except ImportError:
+        HARDWARE_AVAILABLE = False
+        print("Warning: SerialBridge not available")
+    
     SYSTEM_AVAILABLE = True
-except ImportError:
+except ImportError as e:
     SYSTEM_AVAILABLE = False
-    print("Warning: Disaster management system not available, using mock data")
+    print(f"Warning: Disaster management system not available, using mock data: {e}")
 
 app = Flask(__name__, static_folder='.', template_folder='.')
 
@@ -54,10 +62,11 @@ else:
 watchtower = None
 auditor = None
 treasurer = None
+serial_bridge = None
 
 def initialize_agents():
     """Initialize disaster management agents"""
-    global watchtower, auditor, treasurer
+    global watchtower, auditor, treasurer, serial_bridge
     
     if not SYSTEM_AVAILABLE:
         return False
@@ -102,6 +111,19 @@ def initialize_agents():
         watchtower = WatchtowerAgent(watchtower_config)
         auditor = AuditorAgent(auditor_config)
         treasurer = TreasurerAgent(treasurer_config)
+        
+        # Initialize hardware bridge if available
+        if HARDWARE_AVAILABLE:
+            def sensor_callback(data):
+                """Callback for sensor data from ESP32"""
+                if watchtower:
+                    asyncio.run(watchtower.process_sensor_data(data))
+            
+            # TODO: Make the COM port configurable via env var
+            com_port = os.environ.get('ESP32_PORT', 'COM3')
+            serial_bridge = SerialBridge(port=com_port, callback=sensor_callback)
+            serial_bridge.start()
+            print(f"🔌 Hardware bridge initialized on {com_port}")
         
         return True
         
@@ -186,7 +208,8 @@ def test_disaster():
             })
         
         # Check if image file exists
-        image_path = '../test_images/intense_fire.jpg'
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = os.path.join(base_dir, 'test_images', 'intense_fire.jpg')
         if not os.path.exists(image_path):
             print(f"Image file not found: {image_path}")
             print(f"Current directory: {os.getcwd()}")
@@ -246,7 +269,10 @@ def full_test():
         
         # Run real full test
         # Step 1: Disaster Detection
-        disaster_result = asyncio.run(watchtower.process_test_image('../test_images/intense_fire.jpg', (34.0522, -118.2437)))
+        # Step 1: Disaster Detection
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = os.path.join(base_dir, 'test_images', 'intense_fire.jpg')
+        disaster_result = asyncio.run(watchtower.process_test_image(image_path, (34.0522, -118.2437)))
         
         if not disaster_result:
             return jsonify({'status': 'no_disaster'})

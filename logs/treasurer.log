@@ -31,3 +31,20 @@
 {"timestamp": "2025-12-27T07:56:13.128872", "level": "ERROR", "logger": "agent.treasurer", "message": "Failed to connect to blockchain - agent cannot start", "module": "treasurer", "function": "start", "line": 39}
 {"timestamp": "2025-12-27T07:56:53.129998", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
 {"timestamp": "2025-12-27T07:57:01.862199", "level": "ERROR", "logger": "agent.treasurer", "message": "Failed to connect to blockchain - agent cannot start", "module": "treasurer", "function": "start", "line": 39}
+{"timestamp": "2026-01-17T17:58:50.064484", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T17:58:50.066005", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}
+{"timestamp": "2026-01-17T18:00:00.112642", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
+{"timestamp": "2026-01-17T18:00:06.937578", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T18:00:06.938583", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}
+{"timestamp": "2026-01-17T18:01:15.189247", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
+{"timestamp": "2026-01-17T18:01:21.889500", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T18:01:21.890500", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}
+{"timestamp": "2026-01-17T18:02:30.250240", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
+{"timestamp": "2026-01-17T18:02:36.878775", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T18:02:36.879759", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}
+{"timestamp": "2026-01-17T18:03:45.305743", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
+{"timestamp": "2026-01-17T18:03:52.182031", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T18:03:52.183031", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}
+{"timestamp": "2026-01-17T18:05:00.385747", "level": "INFO", "logger": "agent.treasurer", "message": "Stopping treasurer agent", "module": "base_agent", "function": "stop", "line": 40}
+{"timestamp": "2026-01-17T18:05:06.968611", "level": "INFO", "logger": "agent.treasurer", "message": "Starting treasurer agent", "module": "base_agent", "function": "start", "line": 26}
+{"timestamp": "2026-01-17T18:05:06.968611", "level": "INFO", "logger": "agent.treasurer", "message": "Treasurer agent processing loop started", "module": "treasurer", "function": "_processing_loop", "line": 47}

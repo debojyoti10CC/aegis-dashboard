@@ -1,0 +1,35 @@
+# Weilchain Applet Deployment Configuration
+
+[applet]
+name = "counter"
+version = "0.1.0"
+description = "A simple counter applet for Weilchain"
+author = "Developer"
+
+[build]
+language = "rust"
+source_path = "src/lib.rs"
+target = "wasm32-unknown-unknown"
+
+[methods]
+# Public methods exposed by the applet
+init = { params = ["owner: string"], returns = "void" }
+get_count = { params = [], returns = "i64" }
+increment = { params = [], returns = "i64" }
+decrement = { params = [], returns = "i64" }
+add = { params = ["value: i64"], returns = "i64" }
+set_count = { params = ["value: i64"], returns = "i64" }
+reset = { params = [], returns = "i64" }
+get_owner = { params = [], returns = "string" }
+get_state = { params = [], returns = "string" }
+
+[permissions]
+# Define what the applet can access
+storage = true
+network = false
+filesystem = false
+
+[deployment]
+# Deployment settings
+gas_limit = 1000000
+initial_balance = 0

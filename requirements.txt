@@ -10,3 +10,4 @@ redis==5.0.1
 asyncio==3.4.3
 flask-limiter==3.5.0
 gunicorn==21.2.0
+pyserial==3.5

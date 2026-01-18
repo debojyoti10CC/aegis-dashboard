@@ -1,0 +1,17 @@
+[package]
+name = "counter-applet"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Weilchain SDK dependencies (these would be the actual SDK crates)
+# For now, using standard Rust dependencies as placeholders
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# These would be replaced with actual Weilchain SDK crates:
+# weilchain-sdk = "0.1.0"
+# weilchain-applet = "0.1.0"
