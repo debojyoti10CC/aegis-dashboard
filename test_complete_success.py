@@ -21,7 +21,7 @@ async def test_complete_success():
     
     setup_logging()
     
-    # Create agents 
+
     watchtower_config = {
         'heartbeat_interval': 30,
         'disaster_thresholds': {
