@@ -7,7 +7,9 @@ A multi-agent AI platform for automated disaster detection, verification, and bl
 - **🔍 Watchtower Agent**: Processes satellite/drone imagery for disaster detection
 - **🔍 Auditor Agent**: Verifies disasters using ML models and cross-validation
 - **💰 Treasurer Agent**: Distributes funding via Sepolia testnet blockchain
-
+- **🎛️ Orchestrator**: Manages all agents with health monitoring and auto-restart
+- **📊 Terminal Interface**: Monitor and control the system without GUI
+- **🐳 Docker Support**: Complete containerized deployment
 
 ## 🚀 Quick Start
 
