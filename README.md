@@ -2,7 +2,7 @@
 
 A multi-agent AI platform for automated disaster detection, verification, and blockchain-based funding distribution.
 
-## 🌟 Features
+## 🌟 Features 
 
 - **🔍 Watchtower Agent**: Processes satellite/drone imagery for disaster detection
 - **🔍 Auditor Agent**: Verifies disasters using ML models and cross-validation
