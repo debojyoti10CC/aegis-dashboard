@@ -1,4 +1,4 @@
-# Disaster Management System
+# Disaster Management System 
 
 A multi-agent AI platform for automated disaster detection, verification, and blockchain-based funding distribution.
 
