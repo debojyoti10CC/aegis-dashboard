@@ -1,6 +1,6 @@
 # Disaster Management System 
 
-A multi-agent AI platform for automated disaster detection, verification, and blockchain-based funding distribution.
+A multi-agent AI platform for automated disaster detection, verification,blockchain-based funding distribution.
 
 ## 🌟 Features 
 
